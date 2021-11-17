@@ -1,5 +1,4 @@
 from aiogram.types import ReplyKeyboardRemove,ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
-from utils.localization import local
 
 log_btn = InlineKeyboardButton('Логи', callback_data = 'log')
 add_admin_btn = InlineKeyboardButton('Добавить админа', callback_data = 'add_admin')
@@ -49,7 +48,8 @@ inline_report = InlineKeyboardMarkup().add(inline_spam, inline_sale).add(inline_
 
 
 button_search = KeyboardButton('Начать поиск 🔍')
-buy = KeyboardButton('Подписка 💲')
+buy = KeyboardButton('Подписка 💲')
+
 
 mark_menu = ReplyKeyboardMarkup(resize_keyboard=True)
 mark_menu.add(button_search).add(buy)

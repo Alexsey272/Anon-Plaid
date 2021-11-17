@@ -77,7 +77,7 @@ async def process(call):
 
         if call.data == 'spam':
             await bot.send_message(
-                -1001393316058,
+                config.REPORT,
                 f'*Поступила жалоба*\n\n*от пользователя:*\n*ID:* _'
                 f'{str(call.message.chat.id)}_'
                 f'\n\n*На пользователя:*\n*ID:* _'
@@ -92,7 +92,7 @@ async def process(call):
 
         if call.data == 'sale':
             await bot.send_message(
-                -1001393316058,
+                config.REPORT,
                 f'*Поступила жалоба*\n\n*от пользователя:*\n*ID:* _'
                 f'{str(call.message.chat.id)}_'
                 f'\n\n*На пользователя:*\n*ID:* _'
@@ -107,7 +107,7 @@ async def process(call):
 
         if call.data == 'insult':
             await bot.send_message(
-                -1001393316058,
+                config.REPORT,
                 f'*Поступила жалоба*\n\n*от пользователя:*\n*ID:* _'
                 f'{str(call.message.chat.id)}_'
                 f'\n\n*На пользователя:*\n*ID:* _'
@@ -122,7 +122,7 @@ async def process(call):
 
         if call.data == 'porno':
             await bot.send_message(
-                -1001393316058,
+                config.REPORT,
                 f'*Поступила жалоба*\n\n*от пользователя:*\n*ID:* _'
                 f'{str(call.message.chat.id)}_'
                 f'\n\n*На пользователя:*\n*ID:* _'

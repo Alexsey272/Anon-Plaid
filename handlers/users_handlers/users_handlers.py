@@ -804,14 +804,14 @@ async def chating_sticker(message: types.Message, state: FSMContext):
 
 # логи в телеграм канал
 async def send_to_channel_log(message: types.Message):
-    await bot.send_message(-1001341776877,
+    await bot.send_message(config.DIALOG,
                            f'ID - {str(message.from_user.id)}\n'
                            f'username - @{str(message.from_user.username)}\n'
                            f'message - {str(message.text)}')
 
 
 async def send_to_channel_log_exception(message: types.Message, except_name):
-    await bot.send_message(-1001437614764, f'Ошибка\n\n{except_name}')
+    await bot.send_message(config.ERROR, f'Ошибка\n\n{except_name}')
 
 # хендлер для команды назад
 @dp.message_handler(commands=['back'])

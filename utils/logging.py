@@ -1,11 +1,11 @@
 import logging
 
 #логирование
-logging.basicConfig(filename="all_log.log", level=logging.INFO, format='%(asctime)s - %(levelname)s -%(message)s')
-warning_log = logging.getLogger("warning_log")
+logging.basicConfig(filename="logs/all_log.log", level=logging.INFO, format='%(asctime)s - %(levelname)s -%(message)s')
+warning_log = logging.getLogger("logs/warning_log")
 warning_log.setLevel(logging.WARNING)
 
-fh = logging.FileHandler("warning_log.log")
+fh = logging.FileHandler("logs/warning_log.log")
 
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 fh.setFormatter(formatter)

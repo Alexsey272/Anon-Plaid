@@ -32,6 +32,16 @@ DIALOG = <id_channel_dialogs>
 * Запустить скрипт
 `$ python main.py`
 
+## Admin panel
+Панель администратора, предоставляет возможность:
+* Добавить/Удалить администратора
+* Заблокировать/разблокировать пользователя
+* Получить файл с логами
+* Получить список администраторов
+
+Вызвать панель администратора можно с помощью команды `/admpanel`.
+![screenshot](https://i.imgur.com/cNsjJmQ.jpeg)
+
 ## Credits  
 https://github.com/RenatYakublevich/AnonymChat- Anonymous chat is based on this project
 

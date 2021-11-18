@@ -1,4 +1,4 @@
-[![Crimson Plaid](http://imgur.com/a/rXe5S9h)](https://twitter.com/crimson_plaid?t=WKSZyswV6J6xjr5UocWhVg&s=09)
+[![Crimson Plaid](https://imgur.com/a/rXe5S9h)](https://twitter.com/crimson_plaid?t=WKSZyswV6J6xjr5UocWhVg&s=09)
 
 ![https://img.shields.io/badge/Python-3.10.0-blue](https://img.shields.io/badge/Python-3.10.0-blue)
 ![https://img.shields.io/badge/Status-BETA-red](https://img.shields.io/badge/Status-BETA-red) ![https://img.shields.io/badge/Realese-0.3-red](https://img.shields.io/badge/Realese-0.3-red) [![https://img.shields.io/badge/Telegram-Bot-blue](https://img.shields.io/badge/Telegram-Bot-blue)](https://t.me/Crimson_plaid_bot)

@@ -10,20 +10,26 @@
 * специальные команды, для диалогов.
 
 # Get started
-* Установите зависимости  
-`$ pip install -r requirements.txt`
+* Установите зависимости
+```
+$ git clone https://github.com/Alexsey272/Anon-Plaid.git
+$ cd Anon-Plaid
+$ pip install -r requirements.txt
+
+```
 * Создать файл `.env` и укажите переменные окружения
 ```
-TOKENT = <Токен бота>
-ADMINS = <Список администраторов>
-BOT_OWNER = <Владелец бота>
-PAYMENTS = <Токен оплаты>
-YANDEX_API = <API яндекс>
-REPORT = <ID канала для жалоб>
-ERROR = <ID канала для ошибок>
-DIALOG = <ID канала для сообщений> // пользователей, для проверки жалоб
+[default]
+TOKENT = TOKENT_BOT
+ADMINS = LIST_ADMINS
+BOT_OWNER = ID_BOT_OWNER
+PAYMENTS = TOKEN_PAYMENTS
+YANDEX_API = YANDEX_API
+REPORT = ID_CHANNEL_REPORTS
+ERROR = ID_CHANNEL_ERRORS
+DIALOG = ID_CHANNEL_DIALOGS
 ```
-* Запустить скрипт  
+* Запустить скрипт
 `$ python main.py`
 
 ## Credits  

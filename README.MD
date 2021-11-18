@@ -1,5 +1,10 @@
+![Anon Plaid](https://ibb.co/ZLf0b71)
+
+Language: ![https://img.shields.io/badge/Python-3.10.0-blue](https://img.shields.io/badge/Python-3.10.0-blue)
+
+
 # Анонимный чат Crimson Plaid    
-Проект написанный на языке Python, с помощью библиотеки Aiogram. Используется СУБД Sqlite3.
+Проект написанный на языке Python, с помощью библиотеки Aiogram.
 
 * Поддержка обмена аудио, видео и голосовых сообщений с собеседником. 
 * анкеты пользователей для лучшего подбора собеседника.
@@ -18,8 +23,8 @@
     * 'DIALOG' - ID канал для сообщений пользователей, для проверки жалоб
 * Запустить скрипт 'python main.py'
 
-# Credits  
+## Credits  
 https://github.com/RenatYakublevich/AnonymChat- Anonymous chat is based on this project
 
-# Author  
+## Author  
 (C) 2021 Crimson Plaid

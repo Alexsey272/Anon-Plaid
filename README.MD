@@ -1,7 +1,7 @@
 [![Crimson Plaid](https://i.imgur.com/hT9sSmH.png)](https://twitter.com/crimson_plaid?t=WKSZyswV6J6xjr5UocWhVg&s=09)
 
 ![https://img.shields.io/badge/Python-3.10.0-blue](https://img.shields.io/badge/Python-3.10.0-blue)
-![https://img.shields.io/badge/Status-BETA-red](https://img.shields.io/badge/Status-BETA-red) ![https://img.shields.io/badge/Realese-0.3-red](https://img.shields.io/badge/Realese-0.3-red) [![https://img.shields.io/badge/Telegram-Bot-blue](https://img.shields.io/badge/Telegram-Bot-blue)](https://t.me/Crimson_plaid_bot) [![License](https://img.shields.io/badge/license-GPL-3.0-green)](LICENSE) [![Report Bugs!](https://badgen.net/badge/🐞%20Report%20/Bugs/red)](https://t.me/anochat_support)
+![https://img.shields.io/badge/Status-BETA-red](https://img.shields.io/badge/Status-BETA-red) ![https://img.shields.io/badge/Realese-0.3-red](https://img.shields.io/badge/Realese-0.3-red) [![https://img.shields.io/badge/Telegram-Bot-blue](https://img.shields.io/badge/Telegram-Bot-blue)](https://t.me/Crimson_plaid_bot) [![License](https://img.shields.io/badge/license-GPL-green)](LICENSE) [![Report Bugs!](https://badgen.net/badge/🐞%20Report%20/Bugs/red)](https://t.me/anochat_support)
 
 
 # Анонимный чат Crimson Plaid    

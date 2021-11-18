@@ -1,5 +1,5 @@
 ![https://img.shields.io/badge/Python-3.10.0-blue](https://img.shields.io/badge/Python-3.10.0-blue)
-![https://img.shields.io/badge/Status-BETA-red](https://img.shields.io/badge/Status-BETA-red) ![https://img.shields.io/badge/Realese-0.3-red](https://img.shields.io/badge/Realese-0.3-red)
+![https://img.shields.io/badge/Status-BETA-red](https://img.shields.io/badge/Status-BETA-red) [![https://img.shields.io/badge/Realese-0.3-red](https://img.shields.io/badge/Realese-0.3-red)](https://github.com/Alexsey272/Anon-Plaid/releases/tag/v0.3-beta)
 
 
 # Анонимный чат Crimson Plaid    

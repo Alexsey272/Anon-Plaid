@@ -46,4 +46,4 @@ DIALOG = <id_channel_dialogs>
 https://github.com/RenatYakublevich/AnonymChat- Anonymous chat is based on this project
 
 ## Author  
-(C) 2021 Crimson Plaid
+© 2021 Crimson Plaid

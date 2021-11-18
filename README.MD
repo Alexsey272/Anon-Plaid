@@ -1,5 +1,14 @@
-[![тут текст](https://ibb.co/ggR9Ps1)](https://t.me/Crimson_plaid_bot)
+![Crimson Plaid](https://t.me/Crimson_plaid_bot)
 
-#Anonymous chat bot Crimson Plaid
+#Анонимный чат Crimson Plaid
+Проект написанный на языке Python, с помощью библиотеки Aiogram. Используется СУБД Sqlite3.
 
-Анонимный чат команды Crimson plaid
+*Поддержка обмена аудио, видео и голосовых сообщений с собеседником. 
+*анкеты пользователей для лучшего подбора собеседника.
+*специальные команды, для диалогов.
+
+#Credits
+https://github.com/RenatYakublevich/AnonymChat- Anonymous chat is based on this project
+
+#Author
+(C) 2021 Crimson Plaid

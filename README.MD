@@ -15,11 +15,9 @@
 $ git clone https://github.com/Alexsey272/Anon-Plaid.git
 $ cd Anon-Plaid
 $ pip install -r requirements.txt
-
 ```
 * Создать файл `.env` и укажите переменные окружения
-```
-[default]
+```Python
 TOKENT = TOKENT_BOT
 ADMINS = LIST_ADMINS
 BOT_OWNER = ID_BOT_OWNER

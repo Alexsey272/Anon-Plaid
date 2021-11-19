@@ -51,7 +51,7 @@ DIALOG = <id_channel_dialogs>
 ![screenshot](https://i.imgur.com/hpZ222y.jpeg)
 
 ## Credits  
-https://github.com/RenatYakublevich/AnonymChat- Anonymous chat is based on this project
+https://github.com/RenatYakublevich/AnonymChat - Anonymous chat is based on this project
 
 ## Author  
 © 2021 Crimson Plaid

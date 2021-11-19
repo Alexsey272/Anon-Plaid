@@ -240,7 +240,7 @@ async def send_report(message: types.Message):
 
 @dp.message_handler(commands=['about'])
 async def send_about(message: types.Message):
-    await message.answer('@Crimson\_plaid\_bot - Анонимный чат для знакомств и анонимного общения\n\nНаша основная группа в [VKontakte](https://vk.com/crimsonplaid), здесь публикуется вся информация касаемо Анонимного чата.\n\n@CrimsonNews -  канал где публикуются новости и обновления.\n\nНаша группа в [Twitter](https://twitter.com/crimson_plaid) где так же вы найдете информацию о новых версиях и нововведениях\n\n*Версия:* _ОБТ v0.3_',parse_mode="Markdown")
+    await message.answer('@Crimson\_plaid\_bot - Анонимный чат для знакомств и анонимного общения\n\nНаша основная группа в [VKontakte](https://vk.com/crimsonplaid), здесь публикуется вся информация касаемо Анонимного чата.\n\n@CrimsonNews -  канал где публикуются новости и обновления.\n\nНаша группа в [Twitter](https://twitter.com/crimson_plaid) где так же вы найдете информацию о новых версиях и нововведениях\n\nРепозиторий нашего чата на [Github](https://github.com/Alexsey272/Anon-Plaid)\n\n*Версия:* _ОБТ v0.3_',parse_mode="Markdown")
 
 @dp.message_handler(content_types=ContentTypes.PHOTO, state=Report.info)
 async def add_photo_report(message: types.Message, state: FSMContext):

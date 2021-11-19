@@ -20,17 +20,24 @@ $ pip install -r requirements.txt
 ```
 * Создать файл `.env` и укажите переменные окружения
 ```Python
-TOKENT = token_bot
-ADMINS = list_admins
-BOT_OWNER = id_bot_owner
-PAYMENTS = token_payments
-YANDEX_API = yandex_api
-REPORT = id_channel_reports
-ERROR = id_channel_errors
-DIALOG = id_channel_dialogs
+TOKENT = <token_bot>
+ADMINS = <list_admins>
+BOT_OWNER = <id_bot_owner>
+PAYMENTS = <token_payments>
+YANDEX_API = <yandex_api>
+REPORT = <id_channel_reports>
+ERROR = <id_channel_errors>
+DIALOG = <id_channel_dialogs>
 ```
 * Запустить скрипт
 `$ python main.py`
+
+# To-Do
+- [] Комнаты по интересам
+- [] Мультиязычность
+- [] Добавление описания и возраста
+- [] Личные диалоги
+- [] Возможность удалить анкету
 
 ## Admin panel
 Панель администратора, предоставляет возможность:

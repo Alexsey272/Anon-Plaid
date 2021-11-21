@@ -9,9 +9,10 @@ from aiogram.types.input_file import InputFile
 from aiogram import Bot, types
 from handlers.admins_handlers import *
 from handlers.users_handlers import *
+from handlers.users_handlers.users_handlers import start
 
 @dp.callback_query_handler(lambda call: True, state = '*')
-async def process(call):
+async def process(call, state: FSMContext):
     if call.message:
 
         if call.data == 'confirm':
@@ -230,7 +231,7 @@ async def process(call):
                 message_id=call.message.message_id,
                 text='*Отправь ссылку на свою страницу в ВКонтакте*\n\n'
                      '_Для отмены, отправьте слово "Отмена"_',
-                reply_markup=None,
+                reply_markup=cancel_menu,
                 parse_mode='Markdown')
             await Form.vk.set()
 
@@ -238,7 +239,7 @@ async def process(call):
             await bot.edit_message_text(
                 chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                reply_markup=None,
+                reply_markup=cancel_menu,
                 text='*Отправь ссылку на свой Instagram аккаунт*'
                      '\n\n_Для отмены, отправьте слово "Отмена"_',
                 parse_mode='Markdown')
@@ -357,6 +358,24 @@ async def process(call):
                 message_id=call.message.message_id,
                 text="⚠️ *Команда доступна только администраторам*",
                 reply_markup=None,
+                parse_mode='Markdown')
+                
+        if call.data == 'cancel':
+          await bot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=call.message.message_id,
+                text="❌ Действие отмененно",
+                reply_markup = None,
+                parse_mode='Markdown')
+          await state.finish()
+          await start(call.message, state)
+          
+        if call.data == 'stg_cancel':
+          await bot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=call.message.message_id,
+                text= "*Настройки*\n\n_Выберите пункт для настройки_",
+                reply_markup = settings_menu,
                 parse_mode='Markdown')
 
         await call.answer()

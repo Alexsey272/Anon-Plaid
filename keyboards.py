@@ -8,6 +8,9 @@ del_ban_btn = InlineKeyboardButton('Разблокировать', callback_data
 all_admin_btn = InlineKeyboardButton('Список админов', callback_data = 'all_admin')
 admin_menu = InlineKeyboardMarkup().add(log_btn, all_admin_btn).add(add_admin_btn, del_admin_btn).add(add_ban_btn, del_ban_btn)
 
+cancel_btn = InlineKeyboardButton(' Отменить', callback_data = 'cancel')
+cancel_menu = InlineKeyboardMarkup().add(cancel_btn)
+
 channel_btn = InlineKeyboardButton('Перейти в канал', url = "https://t.me/CrimsonNews")
 channel_menu = InlineKeyboardMarkup().add(channel_btn)
 
@@ -27,10 +30,11 @@ menu_social = InlineKeyboardMarkup().add(edit_vk, edit_instagram)
 
 edit_male = InlineKeyboardButton('Парень', callback_data='edit_male')
 edit_female = InlineKeyboardButton('Девушка', callback_data='edit_female')
-edit_sex = InlineKeyboardMarkup().add(edit_male, edit_female)
+cancel_stg = InlineKeyboardButton('Вернуться', callback_data = 'stg_cancel')
+edit_sex = InlineKeyboardMarkup().add(edit_male, edit_female).add(cancel_stg)
 
 stg_sex = InlineKeyboardButton('Пол', callback_data = 'stg_edit_sex')
-settings_menu = InlineKeyboardMarkup().add(stg_sex)
+settings_menu = InlineKeyboardMarkup().add(stg_sex).add(cancel_btn)
 
 link_btn_insta = InlineKeyboardButton('insta', callback_data='insta')
 link_btn_vk = InlineKeyboardButton('Vk', callback_data='vk')

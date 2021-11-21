@@ -16,13 +16,13 @@ from utils.logging import warning_log
 @dp.message_handler(commands=['start'], state='*')
 async def start(message: types.Message, state: FSMContext):
 
-    if not db.user_exists(message.from_user.id):
+    if not db.user_exists(message.chat.id):
         await Register.confirm.set()
         await message.answer(
             'Вы соглашаетесь с [правилами](https://telegra.ph/Pravila-anonimnogo-chata-Crimson-Plaid-07-12) общения в Анонимном чате',
             reply_markup=confirm_button, parse_mode="Markdown")
     else:
-        sex = db.get_sex_user(message.from_user.id)
+        sex = db.get_sex_user(message.chat.id)
 
         await state.finish()
 
@@ -31,7 +31,7 @@ async def start(message: types.Message, state: FSMContext):
             await message.answer("Для улучшеного подбора собеседника, выбери свой пол", reply_markup=my_sex)
         else:
 
-            if not db.subscribtion_exists(message.from_user.id):
+            if not db.subscribtion_exists(message.chat.id):
                 await bot.send_message(message.chat.id,
                                        f"*CRIMSON PLAID*\n\n*Наше сообщество ВКонтакте:*"
                                        f"\n_Подпишись - https://vk.com/crimsonplaid_\n\n_Для управления ботом, "
@@ -39,12 +39,12 @@ async def start(message: types.Message, state: FSMContext):
                                        reply_markup=mark_menu, parse_mode="Markdown")
 
 
-            elif db.subscribtion_exists(message.from_user.id):
+            elif db.subscribtion_exists(message.chat.id):
 
-                from_by = datetime.strptime(db.by_subscribtion(message.from_user.id)[0][2], '%Y-%m-%d')
+                from_by = datetime.strptime(db.by_subscribtion(message.chat.id)[0][2], '%Y-%m-%d')
 
                 if from_by < now:
-                    db.del_subscribtion(message.from_user.id)
+                    db.del_subscribtion(message.chat.id)
                     await bot.send_message(message.chat.id,
                                            f"*CRIMSON PLAID*\n\n*Наше сообщество ВКонтакте:*\n"
                                            f"_Подпишись - https://vk.com/crimsonplaid_\n\n"
@@ -63,8 +63,8 @@ async def confirm_true(message: types.Message, state: FSMContext):
 
     if message.text == 'С правилами ознакомлен ✅️':
 
-        db.add_user(message.from_user.username, message.from_user.id)  # добавляем юзера в табличку дб
-        db.confirm(True, message.from_user.id)
+        db.add_user(message.chat.username, message.chat.id)  # добавляем юзера в табличку дб
+        db.confirm(True, message.chat.id)
         await message.answer("Ваш ответ принят!")
         await Register.next()
         await message.answer("Укажите ваш пол:", reply_markup = my_sex)
@@ -80,7 +80,7 @@ async def sex_select(message: types.Message, state: FSMContext):
 
         if data['info'] == "Парень 👨":
             await state.finish()
-            db.edit_sex(True, message.from_user.id)
+            db.edit_sex(True, message.chat.id)
             await message.answer("*Указан пол:* мужской", parse_mode = "Markdown")
             with open('files/video_user/instructions.mp4', 'rb') as video:
                 await bot.send_video(message.chat.id, video, caption="Рекомендуем, ознакомится с короткой видеоинструкцией, об использовании бота")
@@ -88,7 +88,7 @@ async def sex_select(message: types.Message, state: FSMContext):
 
         elif data['info'] == "Девушка 👩":
             await state.finish()
-            db.edit_sex(False, message.from_user.id)
+            db.edit_sex(False, message.chat.id)
             await message.answer("*Указан пол:* Женский", parse_mode = "Markdown")
             with open('files/video_user/instructions.mp4', 'rb') as video:
                 await bot.send_video(message.chat.id, video, caption="Рекомендуем, ознакомится с короткой видеоинструкцией, об использовании бота")
@@ -101,7 +101,7 @@ async def sex_select(message: types.Message, state: FSMContext):
 
 @dp.message_handler(lambda message: message.text == 'Начать поиск 🔍', state='*')
 async def search(message: types.Message):
-    sub_channel = await bot.get_chat_member(-1001576490683, message.from_user.id)
+    sub_channel = await bot.get_chat_member(config.SUBSCRIBE, message.from_user.id)
 
     if sub_channel.status == "left":
         await message.answer(
@@ -175,8 +175,8 @@ async def not_add_photo_report(message: types.Message, state: FSMContext):
                 message.chat.id,
                 '*Как мне вас называть?*'
                      '\n\n_Никнейм должен состоять не больше чем из 30 символов и не меньше 5 символов_'
-                     '\n\n_Для отмены, отправьте слово "Отмена"_',
-                reply_markup = None,
+                     '\n\n_Для отмены, нажмите кнопку "Отмена"_',
+                reply_markup = cancel_menu,
                 parse_mode='Markdown')
             await Form.nickname.set()
         
@@ -184,8 +184,8 @@ async def not_add_photo_report(message: types.Message, state: FSMContext):
             await state.finish()
             await bot.send_message(
                 message.chat.id,
-                '*Отправь фото, которое ты хочешь поставить на аватарку*\n\n_для отмены отправь слово "Отмена"_',
-                reply_markup=None,
+                '*Отправь фото, которое ты хочешь поставить на аватарку*\n\n_для отмены нажмите кнопку "Отмена"_',
+                reply_markup=cancel_menu,
                 parse_mode='Markdown'
             )
             await Form.photo.set()
@@ -205,8 +205,8 @@ async def not_add_photo_report(message: types.Message, state: FSMContext):
             await bot.send_message(
                 message.chat.id,
                 '*Отправь вашу геолокацию чтобы добавить город*'
-                     '\n\n_Для отмены, отправьте слово "Отмена"_',
-                reply_markup = None,
+                     '\n\n_Для отмены, нажмите кнопку "Отмена"_',
+                reply_markup = cancel_menu,
                 parse_mode='Markdown')
             await Form.city.set()
 
@@ -234,8 +234,8 @@ async def send_report(message: types.Message):
         '_Опишите вашу проблему в подробностях,и мы постараемся ее решить в ближайшее время, и ответить на все вопросы'
         '\n\n_Для отправкий заявки в тех поддержку, отправьте текст сообщения с подробным описание вопроса или '
         'отправьте фото с прикрепленным текстом, чтобы к заявке прикрепить фото_\n\n'
-        'Для отмены, отправьте слово "Отмена"_',
-        parse_mode="Markdown")
+        'Для отмены, нажмите кнопку "Отмена"_',
+        parse_mode="Markdown", reply_markup = cancel_menu)
 
 
 @dp.message_handler(commands=['about'])
@@ -263,20 +263,13 @@ async def add_photo_report(message: types.Message, state: FSMContext):
 @dp.message_handler(content_types=ContentTypes.TEXT, state=Report.info)
 async def not_add_photo_report(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-
-        if message.text.lower() == "отмена":
-            await state.finish()
-            await message.answer("_Действие отменено_", parse_mode="Markdown")
-            await start(message, state)
-        else:
-            data['info'] = message.text
-            info = data['info']
-            await bot.send_message(config.BOT_OWNER, f"*Сообщение от пользователя:*\n_{message.from_user.id}\n\n{info}_",
-                                   parse_mode="Markdown")
-            await message.answer(
+      data['info'] = message.text
+      info = data['info']
+      await bot.send_message(config.BOT_OWNER, f"*Сообщение от пользователя:*\n_{message.from_user.id}\n\n{info}_",parse_mode="Markdown")
+      await message.answer(
                 "✅ _Ваше сообщение отправлено Администратору на рассмотрение, после рассмотрениея, вам ответят_",
                 parse_mode="Markdown")
-            await state.finish()
+      await state.finish()
 
 
 @dp.message_handler(content_types=ContentTypes.LOCATION, state=Form.city)
@@ -301,40 +294,30 @@ async def add_city(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=Form.city)
 async def add_city(message: types.Message, state: FSMContext):
-    if message.text.lower() == "отмена":
-        await state.finish()
-        await message.answer('Действие отменено')
-        await start(message, state)
-    else:
-        return await message.answer('*Я вас не понимаю, отправьте пожалуйста вашу геолокацию, '
-                                    'или отправьте слово "Отмена", чтобы отменить действие*', parse_mode="Markdown")
+    return await message.answer('*Я вас не понимаю, отправьте пожалуйста вашу геолокацию, '
+                                    'или нажмите кнопку "Отмена", чтобы отменить действие*',reply_markup = cancel_menu, parse_mode="Markdown")
 
 
 @dp.message_handler(state=Form.nickname)
 async def add_nickname(message: types.Message, state: FSMContext):
-    if message.text.lower() == "отмена":
-        await state.finish()
-        await message.answer('Действие отменено')
-        await start(message, state)
-    else:
-        if len(message.text) > 30 or len(message.text) < 5:
-            await message.answer(
+    if len(message.text) > 30 or len(message.text) < 5:
+      await message.answer(
                 '*Никнейм не должен состоять больше чем из 30 символов или меньше 5 символов*',
                 parse_mode="Markdown")
-        else:
-            try:
-                async with state.proxy() as data:
-                    data['nickname'] = message.text
-                    await state.finish()
-                    db.add_nickname(message.from_user.id, data['nickname'])
-                    await message.answer(f"*Ваш никнейм:* _{data['nickname']}_", parse_mode="Markdown")
-                    await start(message, state)
+    else:
+      try:
+        async with state.proxy() as data:
+          data['nickname'] = message.text
+          await state.finish()
+          db.add_nickname(message.from_user.id, data['nickname'])
+          await message.answer(f"*Ваш никнейм:* _{data['nickname']}_", parse_mode="Markdown")
+          await start(message, state)
 
-            except sqlite3.IntegrityError:
-                await message.answer(
+      except sqlite3.IntegrityError:
+        await message.answer(
                     f"*Никнейм:* _{data['nickname']}_"
                     f"\n\n_Уже существует, попробуйте что то другое_", parse_mode="Markdown")
-                await Form.nickname.set()
+        await Form.nickname.set()
 
 
 @dp.message_handler(state=Form.vk)
@@ -357,12 +340,7 @@ async def add_vk(message: types.Message, state: FSMContext):
             await message.answer("⚠️ *Отправьте пожалуйста ссылку на ваш аккаунт ВКонтакте*", parse_mode="Markdown")
 
     except IndexError:
-        if message.text.lower() == "отмена":
-            await state.finish()
-            await message.answer("Действие отменено")
-            await start(message, state)
-        else:
-            await message.answer("⚠️ *Отправьте пожалуйста ссылку на ваш аккаунт ВКонтакте*", parse_mode="Markdown")
+      await message.answer("⚠️ *Отправьте пожалуйста ссылку на ваш аккаунт ВКонтакте*", parse_mode="Markdown")
 
 
 @dp.message_handler(state=Form.insta)
@@ -387,12 +365,7 @@ async def add_insta(message: types.Message, state: FSMContext):
             await message.answer("⚠️ *Отправьте пожалуйста ссылку на ваш Instagram аккаунт*", parse_mode="Markdown")
 
     except IndexError:
-        if message.text.lower() == "отмена":
-            await state.finish()
-            await message.answer('Действие отменено')
-            await start(message, state)
-        else:
-            await message.answer("⚠️ *Отправьте пожалуйста ссылку на ваш Instagram аккаунт*", parse_mode="Markdown")
+      await message.answer("⚠️ *Отправьте пожалуйста ссылку на ваш Instagram аккаунт*", parse_mode="Markdown")
 
 
 @dp.message_handler(content_types=ContentTypes.PHOTO, state=Form.photo)
@@ -421,14 +394,9 @@ async def add_avatar(message: types.Message, state: FSMContext):
 
 @dp.message_handler(content_types=ContentTypes.TEXT, state=Form.photo)
 async def add_avatar(message: types.Message, state: FSMContext):
-    if message.text.lower() == "отмена":
-        await message.answer("*Действие отменено!*", parse_mode="Markdown")
-        await state.finish()
-        await start(message, state)
-    else:
-        await message.answer(
+    await message.answer(
             "*Я вас не понимаю, отправьте пожалуйста фото или видео, "
-            "если хотите отменить действие, отправьте слово 'Отмена'*",
+            "если хотите отменить действие, нажмите кнопку 'Отмена'*",reply_markup = cancel_menu,
             parse_mode="Markdown")
 
 

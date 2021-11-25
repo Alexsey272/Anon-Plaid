@@ -1,52 +1,59 @@
 ![Crimson Plaid](https://i.imgur.com/BBeyWph.jpeg)
 
-![https://img.shields.io/badge/Python-3.8.0-blue](https://img.shields.io/badge/Python-3.10.0-blue)
+![https://img.shields.io/badge/Python-3.8.0-blue](https://img.shields.io/badge/Python-3.8.0-blue)
 ![https://img.shields.io/badge/Status-BETA-red](https://img.shields.io/badge/Status-BETA-red) ![https://img.shields.io/badge/Realese-0.3-red](https://img.shields.io/badge/Realese-0.3-red) [![https://img.shields.io/badge/Telegram-Bot-blue](https://img.shields.io/badge/Telegram-Bot-blue)](https://t.me/Crimson_plaid_bot) [![License](https://img.shields.io/badge/license-GPL-green)](LICENSE) [![Report Bugs!](https://badgen.net/badge/🐞%20Report%20/Bugs/red)](https://t.me/anochat_support)
 
 
-# Анонимный чат Crimson Plaid    
-Проект написанный на языке Python, с помощью библиотеки Aiogram.
+# Anonymous Crimson Plaid Chat 
+The project is written in Python, using the Aiogram library.
 
-* Поддержка обмена аудио, видео и голосовых сообщений с собеседником. 
-* анкеты пользователей для лучшего подбора собеседника.
-* специальные команды, для диалогов.
+* Support for the exchange of audio, video and voice messages with the interlocutor. 
+* user profiles for the best selection of the interlocutor.
+* special commands for dialogs.
 
 # Get started
-* Установите зависимости
+* Install dependencies
 ```
 $ git clone https://github.com/Alexsey272/Anon-Plaid.git
 $ cd Anon-Plaid
 $ pip install -r requirements.txt
 ```
-* Создать файл `.env` и укажите переменные окружения
+* Create a `.env` file and specify the environment variables
 ```Python
+#The bot token that you received from BotFather
 TOKENT = <token_bot>
+#ID of all administrators
 ADMINS = <list_admins>
+#ID of the bot owner
 BOT_OWNER = <id_bot_owner>
-PAYMENTS = <token_payments>
-YANDEX_API = <yandex_api>
+#Channel ID for user complaints
 REPORT = <id_channel_reports>
+#Error channel ID
 ERROR = <id_channel_errors>
+#Channel ID for user messages
 DIALOG = <id_channel_dialogs>
 ```
-* Запустить скрипт
+* Run the script
 `$ python main.py`
 
 ## To-Do
-- [ ] Комнаты по интересам
-- [ ] Мультиязычность
-- [ ] Добавление описания и возраста
-- [ ] Личные диалоги
-- [ ] Возможность удалить анкету
+- [ ] Rooms by interests
+- [ ] Multilingualism
+- [ ] Adding a description and age
+- [ ] Personal dialogues
+- [ ] Ability to delete the questionnaire
+- [ ] registration menu
+- [ ] Modify the admin panel
 
 ## Admin panel
-Панель администратора, предоставляет возможность:
-* Добавить/Удалить администратора
-* Заблокировать/разблокировать пользователя
-* Получить файл с логами
-* Получить список администраторов
+The admin panel, provides the ability to:
+* Add/Remove the administrator
+* Block/unblock the user
+* Get a file with logs
+* Get a list of administrators
+* Add a subscription to a user
 
-Вызвать панель администратора можно с помощью команды `/admpanel`.
+You can open the admin panel using the command `/admpanel.`
 
 ![screenshot](https://i.imgur.com/hpZ222y.jpeg)
 
